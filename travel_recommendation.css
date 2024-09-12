@@ -117,6 +117,16 @@ body {
     background-color: #008f86;
 }
 
+/* nav link & search bar styles */
+
+#home-section, #abt-us-section, #contact-us-section {
+    scroll-margin-top: 100px; 
+}
+
+.hidden {
+    display: none;
+}
+
 /* home section */
 
 .home {
@@ -240,7 +250,7 @@ body {
 }
 
 .container p {
-    color: grey;
+    color: rgb(255, 255, 255);
     font-size: 16px;
 }
 
@@ -298,6 +308,7 @@ body {
     border-radius: 5px;
     font-size: 16px;
     background-color: inherit;
+    color: white;
 }
 
 .contact-form input[type="submit"] {
@@ -311,6 +322,13 @@ body {
 .contact-form input[type="submit"]:hover {
     background-color: #008f86;
 }
+
+
+::placeholder {
+    color: rgba(238, 238, 238, 0.659);
+    opacity: 1; /* Ensures the placeholder is fully visible */
+}
+
 
 
 

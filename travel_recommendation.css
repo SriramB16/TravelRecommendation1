@@ -1,0 +1,356 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-image: linear-gradient(to right,#032024, rgba(96, 184, 247, 0.7)) ,url(/TravelRecommendation/assets/nyc\ city.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
+    background-blend-mode: overlay;
+
+}
+
+/* whole navbar style */
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: rgb(0,0,0);
+    background: linear-gradient(86deg, rgba(0,0,0,1) 0%, rgba(83,83,83,1) 100%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* logo section */
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    margin-right: 10px;
+}
+
+.logo h1{
+    color: white;
+    font-size: 28px;
+    font-style: italic;
+}
+
+/* nav-list items */
+
+.nav-links ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-right: 40px;
+}
+
+.nav-links ul li a {
+    text-decoration: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:bold
+}
+
+.nav-links ul li a:hover {
+    /* font-size: 1.05em; */
+    color: aqua;
+    /* text-decoration: underline; */
+}
+
+/* search bar */
+
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: none;
+    width: 400px;
+}
+
+.search-bar button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #00a79d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    width:fit-content;
+    
+}
+
+.search-bar .clear-btn {
+    right: 10px;
+    color: #ffffff;
+    padding: 5px;
+    width: 55px;
+}
+
+.search-bar .search-btn {
+    right: 80px;
+}
+
+/* search btn hover */
+
+.search-bar .search-btn:hover , .clear-btn:hover {
+    background-color: #008f86;
+}
+
+/* home section */
+
+.home {
+    display: flex;
+    position: absolute;
+    left: 13%;
+    color: white;
+    font-family:'Times New Roman', Times, serif;
+    margin-top: 100px;
+}
+
+/* hero section */
+
+.hero .hero-content h1 {
+    font-size: 80px;
+    margin-top: 30px;
+}
+
+.hero .hero-content p {
+    margin-top: 10px;
+    line-height: 20px;
+}
+
+.hero button {
+    margin-top: 25px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: #00a79d;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* about us */
+
+.abt-container {
+    width: 90%;
+    background: rgba(0, 143, 134, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+}
+
+.hero .about-us h1{
+    font-size: 80px;
+    margin-top: 150px;
+    align-items: center;
+}
+
+.hero .about-us p {
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 20px;
+    padding: 20px 25px;
+    line-height: 1.5;
+
+}
+
+
+
+/* Container for "Our Team" */
+
+.our-team {
+    margin-top: 100px;
+}
+.ot-container {
+    display: flex;
+    align-items: center; /* Centers the content */
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Title Styling */
+.ot-container h1 {
+    font-size: 48px;
+    margin-top: 50px;;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    color: white; /* Adjust the color */
+    justify-items: center;
+}
+
+/* Card container to display cards horizontally */
+.card-container {
+    display: flex;
+    justify-content: center; /* Centers the cards horizontally */
+    gap: 20px; /* Space between cards */
+    flex-wrap: nowrap; /* Ensures cards stay in one row */
+    overflow-x: auto; /* Allows horizontal scrolling if content overflows */
+    width: 100%; /* Full width of the container */
+}
+
+/* Individual card styling */
+.card {
+    background: rgba(0, 143, 134, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    text-align: center;
+    width: 250px; /* Adjust width based on your design */
+    flex-shrink: 0; /* Prevent cards from shrinking */
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: 20px;;
+}
+
+.container {
+    padding: 15px;
+}
+
+.container h4 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.container p {
+    color: grey;
+    font-size: 16px;
+}
+
+
+/* contact us */
+
+/* Contact Us Section */
+.contact-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px; /* Adjust the padding as needed */
+    color: white;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    /* background-image: linear-gradient(to right, rgba(3, 32, 36, 0.7), rgba(96, 184, 247, 0.7)), url('/path/to/background-image.jpg'); */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin-top: 100px;
+}
+
+/* Left side - Contact Us text */
+.contact-text {
+    flex: 1;
+    max-width: 40%;
+}
+
+.contact-text h1 {
+    font-size: 72px;
+    margin-bottom: 20px;
+}
+
+.contact-text p {
+    font-size: 24px;
+}
+
+/* Right side - Form */
+
+
+.contact-form {
+    flex: 1;
+    max-width: 50%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 30px;
+    border-radius: 10px;
+    
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: inherit;
+}
+
+.contact-form input[type="submit"] {
+    background-color: #00a79d;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form input[type="submit"]:hover {
+    background-color: #008f86;
+}
+
+
+
+/* footer */
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    position: fixed;
+    left: 3%;
+}
+
+.footer-container .vertical-line {
+    border-left: 3px solid rgb(255, 255, 255);
+    height: 250px;
+    position: absolute;
+    left: 3%; 
+    transform: translateX(-50%); 
+}
+
+.footer-icons {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    gap: 45px; 
+    margin-top: 300px; 
+    left: 3%;
+    transform: translateX(-50%); 
+    justify-items:stretch
+}
+
+
+.footer-icons i {
+    color: #ffffff; /* Default color */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.footer-icons i:hover {
+    color: aqua !important;
+}

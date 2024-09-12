@@ -3,14 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./travel_recommendation.css">
     <title>Explore Sphere</title>
 </head>
 <body>
+    <!-- Header Section -->
     <header>
-        <div id="nav-bar">
-            <div id="logo">ExploreSphere</div>
-            
+        <div class="nav-bar">
+            <div class="logo">
+                <img src="./assets/travel_826070.png" alt="logo" width="40px" height="40px">
+                <h1>ExploreSphere</h1>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Enter a destination or keyword" id="place">
+                <button class="search-btn">Search</button>
+                <button class="clear-btn">Clear</button>
+            </div>
         </div>
     </header>
+
+    <!-- Home section -->
+     <section class="home">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Explore <br> Dream <br> Destination</h1>
+                <p>The world is full of wonders waiting to be discovered, and <br> we’re here to guide you through them.  Explore ancient cultures, <br>dream of far-off places, and travel with confidence using our<br> carefully curated travel insights. Whether you're planning<br> a weekend getaway or a round-the-world adventure,<br> your next unforgettable journey starts here.</p>
+            </div>
+            <button>Book Now</button>
+
+
+            <!-- about us -->
+
+
+            <section class="about-us">
+                <div class="abt-us-content">
+                    <h1>About Us</h1>
+                    <div class="abt-container">
+                        <p>At <b>Explore Sphere</b>, we’re passionate about one thing—helping you experience the world like never before. Founded by avid travelers, we believe that every journey has the potential to transform you, and we’re here to inspire, guide, and support your adventures. Our mission is to provide curated, reliable travel guides that go beyond the typical tourist attractions. From off-the-beaten-path destinations to must-see landmarks, we bring you insider tips, local experiences, and travel hacks that ensure you make the most of every trip.Whether you’re a solo explorer, a family on vacation, or a couple in search of the perfect getaway, <b>Explore Sphere offers tailored recommendations, itineraries, and travel resources to suit your needs.</b> We’re constantly updating our content to reflect the latest trends and hidden gems.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our team -->
+
+
+            <section class="our-team">
+                <div class="ot-container">
+                    <h1>Our <br> Team</h1>
+                    <div class="card-container">
+                        <div class="card">
+                            <img src="./assets/boy.png" alt="Avatar">
+                            <div class="container">
+                                <h4><b>M.S. Dhoni</b></h4>
+                                <p>CEO</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="./assets/boy.png" alt="Avatar">
+                            <div class="container">
+                                <h4><b>Gautam Gambhir</b></h4>
+                                <p>President</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="./assets/woman.png" alt="Avatar">
+                            <div class="container">
+                                <h4><b>Smriti Mandhana</b></h4>
+                                <p>Vice President</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- contact us -->
+            
+            <section class="contact-section">
+                <!-- Left Side - Contact Text -->
+                <div class="contact-text">
+                    <h1>Contact Us</h1>
+                    <p>Get in touch</p>
+                </div>
+            
+                <!-- Right Side - Form -->
+                <div class="contact-form">
+                    <form action="/submit" method="POST">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+            
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+            
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+            
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </section>
+            
+
+        
+    </section>
+
+
+
+
+    <!-- footer Section-->
+
+    <footer>
+        <div class="footer-container">
+            <div class="vertical-line">
+            </div>
+            <div class="footer-icons">
+                <a href="">
+                    <i class="fa-brands fa-facebook-f fa-xl" style="color: #ffffff;"></i>
+                </a>
+                <a href="">
+                    <i class="fa-brands fa-twitter fa-xl" style="color: #ffffff;"></i>
+                
+                </a>
+                <a href="">
+                    <i class="fa-brands fa-instagram fa-xl" style="color: #ffffff;"></i>
+                </a>
+                <a href="">
+                    <i class="fa-brands fa-youtube fa-xl" style="color: #ffffff;"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/37d9e087d3.js" crossorigin="anonymous"></script>
 </body>
 </html>

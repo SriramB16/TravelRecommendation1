@@ -1,18 +1,66 @@
-// Function to check the scroll position and toggle search bar visibility
-window.addEventListener('scroll', function () {
-    const searchBar = document.getElementById('searchBar');
-    const homeSection = document.getElementById('home-section');
-    const aboutUsSection = document.getElementById('abt-us-section');
+let url = "travel_recommendation_api.json";
 
-    // Get the top position of the home and about sections
-    const homeSectionTop = homeSection.getBoundingClientRect().top;
-    const aboutUsSectionTop = aboutUsSection.getBoundingClientRect().top;
+document.getElementById('searchBtn').addEventListener('click', getText);
+document.getElementById('clearBtn').addEventListener('click', clearText);
 
-    // If the scroll position is in the home section, show the search bar
-    if (homeSectionTop >= 0 && aboutUsSectionTop > window.innerHeight) {
-        searchBar.classList.remove('hidden');
-    } else {
-        // Otherwise, hide the search bar
-        searchBar.classList.add('hidden');
+
+function getText() {
+    const searchInput = document.getElementById('place').value;
+    
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            filterData(data,searchInput)
+        })
+        .catch(error => console.error(error));
+}
+
+
+function filterData(allData, searchInput){
+    const searchText = searchInput.toLowerCase();
+
+    // search by categories
+
+    switch(searchText) {
+        case "temple":
+        case "temples":
+            showData(allData.temples, false);
+            return;
+        case "country":
+        case "countries":
+            showData(allData.countries, true);
+            return;
+        case "beach":
+        case "beaches":
+            showData(allData.beaches, false);
+            return
     }
-});
+
+    const matchedCountries = allData.countries.filter(country => {
+
+        // search by country name
+        if(country.name.toLowerCase() === searchText) {
+            return true;
+        }
+        // search by city name
+        return country.cities.some(city => city.name.toLowerCase().includes(searchText));
+    });
+    
+    if (matchedCountries.length > 0) {
+        showData(matchedCountries, true);
+        return;
+    }
+
+    const matchedTemples = 
+}
+
+
+// clearBtn function
+function clearText(){
+    document.getElementById("place").value = "";
+    let clearResult = document.getElementById('results');
+    while(clearResult.firstChild){
+        clearResult.removeChild(clearResult.firstChild);
+    }
+}

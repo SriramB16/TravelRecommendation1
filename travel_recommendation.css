@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Times New Roman', Times, serif;
-    background-image: linear-gradient(to right,#032024, rgba(96, 184, 247, 0.7)) ,url(/TravelRecommendation/assets/nyc\ city.jpg);
+    background-image: linear-gradient(to right,#032024, rgba(96, 184, 247, 0.7)) ,url(./assets/nyc\ city.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size:cover;

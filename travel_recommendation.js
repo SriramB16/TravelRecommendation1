@@ -37,6 +37,8 @@ function filterData(allData, searchInput){
             return
     }
 
+    // search by country and city
+
     const matchedCountries = allData.countries.filter(country => {
 
         // search by country name
@@ -52,7 +54,27 @@ function filterData(allData, searchInput){
         return;
     }
 
-    const matchedTemples = 
+    // search by temple names
+    const matchedTemples = allData.temples.filter( temple => {
+        temple.name.toLowerCase().includes(searchText);
+    });
+    if(matchedTemples.length > 0) {
+        showData(matchedTemples, false);
+        return;
+    }
+
+    // search by beaches
+
+    const matchedBeaches = allData.beaches.filter(beach => {
+        beach.name.toLowerCase.includes(searchText)
+    });
+    
+    if(matchedBeaches.length > 0) {
+        showData(matchedBeaches, false);
+        return;
+    }
+
+    showMessage();
 }
 
 

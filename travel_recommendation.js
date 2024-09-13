@@ -77,6 +77,57 @@ function filterData(allData, searchInput){
     showMessage();
 }
 
+// func to display the result in card
+
+function  showData(dataResult, isCountry) {
+    const container = document.getElementById('results');
+    container.innerHTML = '';
+
+    dataResult.forEach(item => {
+        const name = isCountry? item.name : item.name;
+        const description = isCountry ? 'Explore the cities of ' + item.name : item.description
+        const imageUrl = isCountry ? item.cities[0].imageUrl :imageUrl;
+        
+        const cardDiv = document.createElement('div');
+        cardDiv.classList.add('card');
+
+        const img = document.createElement('img');
+        img.classList.add('card-img');
+        img.src = imageUrl;
+        img.alt = name;
+
+        const contentDiv = document.createElement('div');
+        contentDiv.classList.add('card-content');
+
+        const title = document.createElement('h3');
+        title.textContent = name;
+
+        const desc = document.createElement('p');
+        desc.textContent = description;
+
+        const button = document.createElement('button');
+        button.textContent = 'Visit';
+
+        contentDiv.appendChild(title);
+        contentDiv.appendChild(desc);
+        contentDiv.appendChild(button);
+
+        cardDiv.appendChild(img);
+        cardDiv.appendChild(contentDiv);
+
+        container.appendChild(cardDiv);
+    });
+}
+
+function showMessage() {
+    const container = document.getElementById('results');
+    container.innerHTML = '';
+
+    const message = document.createElement('p');
+    message.textContent = 'No results found for your search.';
+    message.style.color = 'red';
+    message.style.fontSize = '18px';
+}
 
 // clearBtn function
 function clearText(){

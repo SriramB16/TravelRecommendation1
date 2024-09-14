@@ -3,26 +3,23 @@ let url = "travel_recommendation_api.json";
 document.getElementById('searchBtn').addEventListener('click', getText);
 document.getElementById('clearBtn').addEventListener('click', clearText);
 
-
 function getText() {
     const searchInput = document.getElementById('place').value;
-    
+
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
-            filterData(data,searchInput)
+            console.log(data);
+            filterData(data, searchInput);
         })
         .catch(error => console.error(error));
 }
 
-
-function filterData(allData, searchInput){
+function filterData(allData, searchInput) {
     const searchText = searchInput.toLowerCase();
 
-    // search by categories
-
-    switch(searchText) {
+    // Search by categories
+    switch (searchText) {
         case "temple":
         case "temples":
             showData(allData.temples, false);
@@ -34,42 +31,51 @@ function filterData(allData, searchInput){
         case "beach":
         case "beaches":
             showData(allData.beaches, false);
-            return
+            return;
     }
 
-    // search by country and city
-
+    // Search by country and city
     const matchedCountries = allData.countries.filter(country => {
-
-        // search by country name
-        if(country.name.toLowerCase() === searchText) {
+        // Search by country name
+        if (country.name.toLowerCase() === searchText) {
             return true;
         }
-        // search by city name
+        // Search by city name
         return country.cities.some(city => city.name.toLowerCase().includes(searchText));
     });
-    
+
     if (matchedCountries.length > 0) {
-        showData(matchedCountries, true);
+        const country = matchedCountries[0];
+
+        // If searching for a specific city
+        const searchByCity = country.cities.filter(city => city.name.toLowerCase().includes(searchText));
+
+        if (searchByCity.length > 0) {
+            // Show only the matched city if found
+            showCityData(searchByCity);
+        } else {
+            // Show all cities in the country if searching by country
+            showCityData(country.cities);
+        }
         return;
     }
 
-    // search by temple names
-    const matchedTemples = allData.temples.filter( temple => {
-        temple.name.toLowerCase().includes(searchText);
+    // Search by temple names
+    const matchedTemples = allData.temples.filter(temple => {
+        return temple.name.toLowerCase().includes(searchText);
     });
-    if(matchedTemples.length > 0) {
+
+    if (matchedTemples.length > 0) {
         showData(matchedTemples, false);
         return;
     }
 
-    // search by beaches
-
+    // Search by beaches
     const matchedBeaches = allData.beaches.filter(beach => {
-        beach.name.toLowerCase.includes(searchText)
+        return beach.name.toLowerCase().includes(searchText);
     });
-    
-    if(matchedBeaches.length > 0) {
+
+    if (matchedBeaches.length > 0) {
         showData(matchedBeaches, false);
         return;
     }
@@ -77,35 +83,31 @@ function filterData(allData, searchInput){
     showMessage();
 }
 
-// func to display the result in card
-
-function  showData(dataResult, isCountry) {
+// Function to display city results in cards
+function showCityData(cities) {
     const container = document.getElementById('results');
-    container.innerHTML = '';
+    container.innerHTML = ''; // Clear previous results
 
-    dataResult.forEach(item => {
-        const name = isCountry? item.name : item.name;
-        const description = isCountry ? 'Explore the cities of ' + item.name : item.description
-        const imageUrl = isCountry ? item.cities[0].imageUrl :imageUrl;
-        
+    cities.forEach(city => {
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('card');
 
         const img = document.createElement('img');
         img.classList.add('card-img');
-        img.src = imageUrl;
-        img.alt = name;
+        img.src = city.imageUrl;
+        img.alt = city.name;
 
         const contentDiv = document.createElement('div');
         contentDiv.classList.add('card-content');
 
         const title = document.createElement('h3');
-        title.textContent = name;
+        title.textContent = city.name;
 
         const desc = document.createElement('p');
-        desc.textContent = description;
+        desc.textContent = city.description;
 
         const button = document.createElement('button');
+        button.classList.add('visit-btn');
         button.textContent = 'Visit';
 
         contentDiv.appendChild(title);
@@ -119,21 +121,74 @@ function  showData(dataResult, isCountry) {
     });
 }
 
+// Function to display results (temples, beaches, etc.) in cards
+function showData(dataResult, isCountry) {
+    const container = document.getElementById('results');
+    container.innerHTML = ''; // Clear previous results
+
+    dataResult.forEach(item => {
+        if (isCountry) {
+            // If it's a country, loop through each city and create cards for each
+            item.cities.forEach(city => {
+                createCard(city.name, city.description, city.imageUrl, container);
+            });
+        } else {
+            // Otherwise, just create a card for the item (e.g., beach, temple)
+            createCard(item.name, item.description, item.imageUrl, container);
+        }
+    });
+}
+
+// Helper function to create cards
+function createCard(name, description, imageUrl, container) {
+    const cardDiv = document.createElement('div');
+    cardDiv.classList.add('card');
+
+    const img = document.createElement('img');
+    img.classList.add('card-img');
+    img.src = imageUrl;
+    img.alt = name;
+
+    const contentDiv = document.createElement('div');
+    contentDiv.classList.add('card-content');
+
+    const title = document.createElement('h3');
+    title.textContent = name;
+
+    const desc = document.createElement('p');
+    desc.textContent = description;
+
+    const button = document.createElement('button');
+    button.classList.add('visit-btn');
+    button.textContent = 'Visit';
+
+    contentDiv.appendChild(title);
+    contentDiv.appendChild(desc);
+    contentDiv.appendChild(button);
+
+    cardDiv.appendChild(img);
+    cardDiv.appendChild(contentDiv);
+
+    container.appendChild(cardDiv);
+}
+
 function showMessage() {
     const container = document.getElementById('results');
-    container.innerHTML = '';
+    container.innerHTML = ''; // Clear previous results
 
     const message = document.createElement('p');
     message.textContent = 'No results found for your search.';
     message.style.color = 'red';
     message.style.fontSize = '18px';
+
+    container.appendChild(message);
 }
 
-// clearBtn function
-function clearText(){
+// Clear button function
+function clearText() {
     document.getElementById("place").value = "";
     let clearResult = document.getElementById('results');
-    while(clearResult.firstChild){
+    while (clearResult.firstChild) {
         clearResult.removeChild(clearResult.firstChild);
     }
 }
